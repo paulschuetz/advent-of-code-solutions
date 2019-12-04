@@ -14,6 +14,14 @@ class FindWireIntersectionTest{
     }
 
     @Test
+    fun solveQuizB(){
+        val path1 = File("src/test/resources/input03.txt").readLines()[0].trim(',').split(',').map { WirePathFactory.fromInput(it) }.toList()
+        val path2 = File("src/test/resources/input03.txt").readLines()[1].trim(',').split(',').map { WirePathFactory.fromInput(it) }.toList()
+        val result = FindWireIntersection().findEfficientIntersection(path1, path2)
+        print("efficient intersection: $result")
+    }
+
+    @Test
     fun testExample(){
         // R8,U5,L5,D3
         val wirePathA = listOf(WirePath(Direction.RIGHT, 8), WirePath(Direction.UP, 5), WirePath(Direction.LEFT, 5), WirePath(Direction.DOWN, 3))
