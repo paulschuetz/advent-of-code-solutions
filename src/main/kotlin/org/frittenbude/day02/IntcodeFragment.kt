@@ -1,7 +1,7 @@
 package org.frittenbude.day02
 
 enum class Opcode{
-    ADD, MULTIPLY
+    ADD, MULTIPLY, INPUT, OUTPUT
 }
 
 data class IntcodeFragment(val opcode: Opcode, val posA: Int, val posB: Int, val posResult: Int)
