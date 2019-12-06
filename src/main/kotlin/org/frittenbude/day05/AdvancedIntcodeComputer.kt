@@ -31,12 +31,53 @@ class AdvancedIntcodeComputer{
                     index+=4
                 }
                 3 -> {
-                    input[input[index+1]] = 1
+                    input[input[index+1]] = 5
                     index+=2
                 }
                 4 -> {
-                    println("output: ${input[input[index+1]]}")
+                    val pMode1 = (input[index] / 100) % 10
+                    val outputIndex = if(pMode1 == 0) input[index+1] else index +1
+                    println("output: ${input[outputIndex]}")
                     index +=2
+                }
+                5 -> {
+                    val pMode2 = (input[index] / 1000) % 10
+                    val pMode1 = (input[index] / 100) % 10
+                    val number = if(pMode1 == 0) input[input[index+1]] else input[index+1]
+                    if(number != 0){
+                        index = if(pMode2 == 0) input[input[index+2]] else input[index+2]
+                    }
+                    else{
+                        index += 3
+                    }
+                }
+                6 -> {
+                    val pMode2 = (input[index] / 1000) % 10
+                    val pMode1 = (input[index] / 100) % 10
+                    val number = if(pMode1 == 0) input[input[index+1]] else input[index+1]
+                    if(number == 0){
+                        index = if(pMode2 == 0) input[input[index+2]] else input[index+2]
+                    }else{
+                        index += 3
+                    }
+                }
+                7 -> {
+                    val pMode2 = (input[index] / 1000) % 10
+                    val pMode1 = (input[index] / 100) % 10
+                    val num1 = if(pMode1 == 0) input[input[index+1]] else input[index+1]
+                    val num2 = if(pMode2 == 0) input[input[index+2]] else input[index+2]
+                    val saveIndex = input[index+3]
+                    input[saveIndex] = if(num1 < num2) 1 else 0
+                    index +=4
+                }
+                8 -> {
+                    val pMode2 = (input[index] / 1000) % 10
+                    val pMode1 = (input[index] / 100) % 10
+                    val num1 = if(pMode1 == 0) input[input[index+1]] else input[index+1]
+                    val num2 = if(pMode2 == 0) input[input[index+2]] else input[index+2]
+                    val saveIndex = input[index+3]
+                    input[saveIndex] = if(num1 == num2) 1 else 0
+                    index +=4
                 }
                 else -> throw Exception("Unknown operation")
             }
