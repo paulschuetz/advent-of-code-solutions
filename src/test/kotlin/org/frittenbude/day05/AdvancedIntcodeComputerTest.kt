@@ -12,7 +12,7 @@ class AdvancedIntcodeComputerTest{
     }
 
     @Test
-    fun printSolutionA(){
+    fun printSolution(){
         val instructions = File("src/test/resources/input05.txt").readLines()[0].trim(',').split(',').map { Integer.parseInt(it) }.toList()
         AdvancedIntcodeComputer().compute(instructions)
     }
