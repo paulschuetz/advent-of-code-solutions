@@ -8,6 +8,7 @@ class ImageDecoderTest{
     @Test
     fun test(){
         val pixels = File("src/test/resources/input08.txt").readText().toCharArray().map { Integer.parseInt(it.toString()) }.toList()
-        print(ImageDecoder().checkForCorruption(pixels))
+        println(ImageDecoder().checkForCorruption(pixels))
+        ImageDecoder().drawImage(pixels)
     }
 }
